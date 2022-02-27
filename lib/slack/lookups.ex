@@ -84,15 +84,12 @@ defmodule Slack.Lookups do
   end
 
   @doc ~S"""
-  Turns a Slack channel ID (`"C…"`) into a string in the format "#CHANNEL_NAME".
+  Turns a Slack channel ID (`"C…"`) or private channel ID (`"G…"`) into a string in the format "#CHANNEL_NAME".
   """
   def lookup_channel_name(channel_id = "C" <> _id, slack) do
     "#" <> slack.channels[channel_id].name
   end
 
-  @doc ~S"""
-  Turns a Slack private channel ID (`"G…"`) into a string in the format "#CHANNEL_NAME".
-  """
   def lookup_channel_name(channel_id = "G" <> _id, slack) do
     "#" <> slack.groups[channel_id].name
   end
